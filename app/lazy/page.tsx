@@ -8,16 +8,16 @@ export default function LazyPage() {
   const data = useLazyLoadQuery<page2Query>(
     graphql`
       query page2Query {
-        lazyContentd
+        lazyContent
       }
     `,
     {}
   );
   return (
     <div>
-      Page: {data.lazyContentd}
-      <div>
-        <Link href="/">Home</Link>
+      Slow data: {data.lazyContent}
+      <div style={{ marginTop: 20 }}>
+        <Link href="/">Go back home</Link>
       </div>
     </div>
   );

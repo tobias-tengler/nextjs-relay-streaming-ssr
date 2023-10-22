@@ -7,23 +7,21 @@ import { Suspense, use } from "react";
 import { graphql, useFragment, useLazyLoadQuery } from "react-relay";
 
 export default function Home() {
-  console.log("render home");
   return (
     <div>
       <MainContent />
-      <div>
-        <Link href="/lazy">Lazy</Link>
+      <div style={{ marginTop: 20 }}>
+        <Link href="/lazy">Go to page loading slow data</Link>
       </div>
     </div>
   );
 }
 
 function MainContent() {
-  console.log("render main content");
   const data = useLazyLoadQuery<pageQuery>(
     graphql`
       query pageQuery {
-        mainContentd
+        mainContent
         ...pageFragment @defer
       }
     `,
@@ -32,7 +30,7 @@ function MainContent() {
 
   return (
     <>
-      <main>{data.mainContentd}</main>
+      <main>Main data: {data.mainContent}</main>
       <Suspense fallback={<div>Loading...</div>}>
         <LazyContent queryRef={data} />
       </Suspense>
@@ -44,11 +42,11 @@ function LazyContent({ queryRef }: { queryRef: pageFragment$key }) {
   const data = useFragment(
     graphql`
       fragment pageFragment on Query {
-        lazyContentd
+        lazyContent
       }
     `,
     queryRef
   );
 
-  return <div>{data.lazyContentd}</div>;
+  return <div>Slow data: {data.lazyContent}</div>;
 }

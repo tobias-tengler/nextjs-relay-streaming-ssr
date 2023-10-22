@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5faa061fe85279da05566f58abe13614>>
+ * @generated SignedSource<<9622115cecfda744912de0d3e76e5626>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,9 +9,9 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type page2Query$variables = {};
+export type page2Query$variables = Record<PropertyKey, never>;
 export type page2Query$data = {
-  readonly lazyContentd: string;
+  readonly lazyContent: string;
 };
 export type page2Query = {
   response: page2Query$data;
@@ -24,7 +24,7 @@ var v0 = [
     "alias": null,
     "args": null,
     "kind": "ScalarField",
-    "name": "lazyContentd",
+    "name": "lazyContent",
     "storageKey": null
   }
 ];
@@ -46,16 +46,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "68d614a972f4e54c2d108b2eccf6bdcb",
+    "cacheID": "b3464275cdd165fa580a6dc0cb433781",
     "id": null,
     "metadata": {},
     "name": "page2Query",
     "operationKind": "query",
-    "text": "query page2Query {\n  lazyContentd\n}\n"
+    "text": "query page2Query {\n  lazyContent\n}\n"
   }
 };
 })();
 
-(node as any).hash = "0c227c16c4d73dacdefe1de4b6f9db40";
+(node as any).hash = "0ca9ac8ff2105e94a178271a44b62c7a";
 
 export default node;

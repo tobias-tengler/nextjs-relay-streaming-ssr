@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ad28eb9e48a5b12a64a6fcaf8a6101c0>>
+ * @generated SignedSource<<01f703e1642c51a8de0295af357ead2d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,9 +10,9 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type pageQuery$variables = {};
+export type pageQuery$variables = Record<PropertyKey, never>;
 export type pageQuery$data = {
-  readonly mainContentd: string;
+  readonly mainContent: string;
   readonly " $fragmentSpreads": FragmentRefs<"pageFragment">;
 };
 export type pageQuery = {
@@ -25,7 +25,7 @@ var v0 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "mainContentd",
+  "name": "mainContent",
   "storageKey": null
 };
 return {
@@ -66,7 +66,7 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "lazyContentd",
+            "name": "lazyContent",
             "storageKey": null
           }
         ]
@@ -74,16 +74,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e659242cb82d5a2d6d5c51dcfdb44814",
+    "cacheID": "325869ac05b5766692ab4fcbad53c121",
     "id": null,
     "metadata": {},
     "name": "pageQuery",
     "operationKind": "query",
-    "text": "query pageQuery {\n  mainContentd\n  ...pageFragment @defer(label: \"pageQuery$defer$pageFragment\")\n}\n\nfragment pageFragment on Query {\n  lazyContentd\n}\n"
+    "text": "query pageQuery {\n  mainContent\n  ...pageFragment @defer(label: \"pageQuery$defer$pageFragment\")\n}\n\nfragment pageFragment on Query {\n  lazyContent\n}\n"
   }
 };
 })();
 
-(node as any).hash = "89478e48b031756a77ab712ff71ec4c8";
+(node as any).hash = "ff3bfbfcf20b2a33aacb9a521e435b7c";
 
 export default node;
