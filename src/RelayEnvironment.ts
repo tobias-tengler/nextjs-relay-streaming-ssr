@@ -1,5 +1,7 @@
 import { meros } from "meros/browser";
-import { Environment, Network, RecordSource, Store, FetchFunction, Observable } from "relay-runtime";
+import { Environment, Network, RecordSource, Store, FetchFunction, Observable, GraphQLResponse, Observer } from "relay-runtime";
+
+const IS_SERVER = typeof window === "undefined";
 
 const fetchFn: FetchFunction = (operation, variables) => {
   return Observable.create((sink) => {
@@ -41,21 +43,31 @@ const fetchFn: FetchFunction = (operation, variables) => {
   });
 };
 
-function createRelayEnvironment() {
+function createRelayEnvironment(observer?: Observer<GraphQLResponse>) {
+  const curriedFetchFn: FetchFunction = (...args) => {
+    const observable = fetchFn(...args);
+
+    if (observer && "subscribe" in observable) {
+      observable.subscribe(observer);
+    }
+
+    return observable;
+  };
+
   return new Environment({
-    network: Network.create(fetchFn),
+    network: Network.create(curriedFetchFn),
     store: new Store(new RecordSource()),
-    isServer: typeof window === "undefined",
+    isServer: IS_SERVER,
   });
 }
 
 let relayEnvironment: Environment | undefined;
 
-export function initRelayEnvironment() {
-  const environment = relayEnvironment ?? createRelayEnvironment();
+export function initRelayEnvironment(observer?: Observer<GraphQLResponse>) {
+  const environment = relayEnvironment ?? createRelayEnvironment(observer);
 
   // For SSG and SSR always create a new Relay environment.
-  if (typeof window === "undefined") {
+  if (IS_SERVER) {
     return environment;
   }
 
