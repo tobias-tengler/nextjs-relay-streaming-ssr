@@ -1,6 +1,6 @@
 "use client";
 
-import { page2Query } from "@/__generated__/page2Query.graphql";
+import { page2Query } from "@/app/lazy/__generated__/page2Query.graphql";
 import Link from "next/link";
 import { graphql, useLazyLoadQuery } from "react-relay";
 

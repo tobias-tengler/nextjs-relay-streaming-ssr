@@ -4,7 +4,6 @@ const nextConfig = {
     relay: {
       src: "./",
       language: "typescript",
-      artifactDirectory: "./__generated__",
     },
   },
 };

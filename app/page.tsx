@@ -1,7 +1,7 @@
 "use client";
 
-import { pageFragment$key } from "@/__generated__/pageFragment.graphql";
-import { pageQuery } from "@/__generated__/pageQuery.graphql";
+import { pageFragment$key } from "@/app/__generated__/pageFragment.graphql";
+import { pageQuery } from "@/app/__generated__/pageQuery.graphql";
 import Link from "next/link";
 import { Suspense, use } from "react";
 import { graphql, useFragment, useLazyLoadQuery } from "react-relay";
