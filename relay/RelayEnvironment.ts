@@ -96,8 +96,10 @@ function getNetworkObservable(operation: RequestParameters, variables: Variables
 
   return Observable.create<GraphQLResponse>((sink) => {
     (async () => {
-      if (operation.name === "page2Query") {
+      if (operation.name === "SlowContentLoaderQuery") {
         await sleep(1500);
+
+        console.log("received lazyContent from Back-End");
 
         sink.next({
           data: {
@@ -110,6 +112,8 @@ function getNetworkObservable(operation: RequestParameters, variables: Variables
 
       await sleep(2000);
 
+      console.log("received mainContent from Back-End");
+
       // Send the maincontent.
       sink.next({
         data: {
@@ -121,13 +125,15 @@ function getNetworkObservable(operation: RequestParameters, variables: Variables
 
       await sleep(2000);
 
+      console.log("received deferred lazyContent from Back-End");
+
       // Stream in the lazy content.
       sink.next({
         data: {
           lazyContent: new Date().getTime(),
         },
         path: [],
-        label: "pageQuery$defer$pageFragment",
+        label: "MainContentQuery$defer$SlowContent",
         // @ts-expect-error
         hasNext: false,
       });

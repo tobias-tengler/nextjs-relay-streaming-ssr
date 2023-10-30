@@ -1,3 +1,5 @@
+"use client";
+
 import { QueryResponsePayload, createServerSideRelayEnvironment, createClientSideRelayEnvironment } from "@/relay/RelayEnvironment";
 import { useServerInsertedHTML } from "next/navigation";
 import { ReactNode, useRef, useMemo } from "react";
@@ -85,12 +87,12 @@ function resolveReplaySubject(queryId: string) {
   const replaySubject = new ReplaySubject<GraphQLResponse>();
 
   function replayResponse(response: GraphQLResponse) {
-    console.log("replaying response", queryId, response);
+    console.log("replaying response of", queryId, response);
 
     replaySubject.next(response);
 
     if (!("hasNext" in response) || !response.hasNext) {
-      console.log("complete replay", queryId);
+      console.log("complete replay of", queryId);
       replaySubject.complete();
 
       delete win[windowId];

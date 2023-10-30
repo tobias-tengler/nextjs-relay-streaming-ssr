@@ -1,23 +1,15 @@
-"use client";
-
-import { page2Query } from "@/app/lazy/__generated__/page2Query.graphql";
+import { SlowContentLoader } from "@/app/lazy/SlowContentLoader";
 import Link from "next/link";
-import { graphql, useLazyLoadQuery } from "react-relay";
+
+export const dynamic = "force-dynamic";
 
 export default function LazyPage() {
-  const data = useLazyLoadQuery<page2Query>(
-    graphql`
-      query page2Query {
-        lazyContent
-      }
-    `,
-    {}
-  );
   return (
     <div>
-      Slow data: {data.lazyContent}
-      <div style={{ marginTop: 20 }}>
-        <Link href="/">Go back home</Link>
+      <SlowContentLoader />
+
+      <div className="mt-10">
+        <Link href="/">⬅️ Go back home</Link>
       </div>
     </div>
   );

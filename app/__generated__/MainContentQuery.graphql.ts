@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<01f703e1642c51a8de0295af357ead2d>>
+ * @generated SignedSource<<f74250aec40794b605d6cd7d1865789c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,14 +10,14 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type pageQuery$variables = Record<PropertyKey, never>;
-export type pageQuery$data = {
+export type MainContentQuery$variables = Record<PropertyKey, never>;
+export type MainContentQuery$data = {
   readonly mainContent: string;
-  readonly " $fragmentSpreads": FragmentRefs<"pageFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"SlowContent">;
 };
-export type pageQuery = {
-  response: pageQuery$data;
-  variables: pageQuery$variables;
+export type MainContentQuery = {
+  response: MainContentQuery$data;
+  variables: MainContentQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -33,7 +33,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "pageQuery",
+    "name": "MainContentQuery",
     "selections": [
       (v0/*: any*/),
       {
@@ -42,7 +42,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "pageFragment"
+            "name": "SlowContent"
           }
         ]
       }
@@ -54,13 +54,13 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "pageQuery",
+    "name": "MainContentQuery",
     "selections": [
       (v0/*: any*/),
       {
         "if": null,
         "kind": "Defer",
-        "label": "pageQuery$defer$pageFragment",
+        "label": "MainContentQuery$defer$SlowContent",
         "selections": [
           {
             "alias": null,
@@ -74,16 +74,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "325869ac05b5766692ab4fcbad53c121",
+    "cacheID": "c9a5d781e3f37b3b4090f86fad16286b",
     "id": null,
     "metadata": {},
-    "name": "pageQuery",
+    "name": "MainContentQuery",
     "operationKind": "query",
-    "text": "query pageQuery {\n  mainContent\n  ...pageFragment @defer(label: \"pageQuery$defer$pageFragment\")\n}\n\nfragment pageFragment on Query {\n  lazyContent\n}\n"
+    "text": "query MainContentQuery {\n  mainContent\n  ...SlowContent @defer(label: \"MainContentQuery$defer$SlowContent\")\n}\n\nfragment SlowContent on Query {\n  lazyContent\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ff3bfbfcf20b2a33aacb9a521e435b7c";
+(node as any).hash = "f4f5a8a9285bce76c42eef1c51cc5903";
 
 export default node;
