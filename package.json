@@ -1,5 +1,5 @@
 {
-  "name": "next13-relay-streaming",
+  "name": "nextjs-relay-streaming-ssr",
   "version": "0.1.0",
   "private": true,
   "packageManager": "yarn@4.0.1",
