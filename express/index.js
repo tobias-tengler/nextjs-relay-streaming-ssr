@@ -6,6 +6,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// text/plain is being buffered by default and assumed if
+// no content-type header is set.
+// If the first chunk contains valid html though, the
+// browser infers the content-type and allows chunked streaming.
 app.get("/stream", async function (req, res, next) {
   res.write(
     "<!DOCTYPE html><html><head><title>Streaming!</title></head><body>"
