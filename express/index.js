@@ -31,14 +31,17 @@ app.get("/stream", async function (req, res, next) {
 
 app.use("/react-stream", (request, response) => {
   const { pipe } = renderToPipeableStream(React.createElement(App), {
+    // This is the hydration script.
     bootstrapModules: ["/dist/main.js"],
     onShellReady() {
+      // This is invoked before the first flush to the client.
       response.setHeader("content-type", "text/html");
       pipe(response);
     },
   });
 });
 
+// This serves the bootstrap module, necessar for hydration
 app.get("/dist/main.js", (req, res) => {
   res.sendFile("dist/main.js", { root: "./" });
 });
